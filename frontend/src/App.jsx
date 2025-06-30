@@ -28,7 +28,7 @@ export default function App() {
   useEffect(() => {
     const id = searchParams.get('id');
     if (id && id !== 'null' && id !== 'undefined') {
-      axios.get(`http://localhost:3001/load/${id}`)
+      axios.get(`https://code-editor-backend-50op.onrender.com/load/${id}`)
         .then(res => {
           setHtml(res.data.html);
           setCss(res.data.css);
@@ -59,7 +59,7 @@ export default function App() {
 
   const saveCode = async () => {
     try {
-      const res = await axios.post('http://localhost:3001/save', { html, css, js });
+      const res = await axios.post('https://code-editor-backend-50op.onrender.com/save', { html, css, js });
       const newUrl = `${window.location.origin}?id=${res.data.id}`;
       navigator.clipboard.writeText(newUrl);
       alert('Link copied to clipboard: ' + newUrl);
